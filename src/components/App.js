@@ -13,8 +13,7 @@ const App = () => {
     <div>
         {/* Do not remove the main div */}
         <h1>Parent Component</h1>
-        <p>{isLoggedIn?"You are logged in!":""}</p>
-        <form onSubmit={handleLogin}>
+        {isLoggedIn?<p>You are logged in!</p>: <form onSubmit={handleLogin}>
           <label htmlFor="userName">Username: </label>
           <input type="text" id="userName"/>
           <br></br>
@@ -26,7 +25,8 @@ const App = () => {
           <br></br>
           <br></br>
           <input type="submit" value="Login"></input>
-        </form>
+        </form>}
+        
     </div>
   )
 }
