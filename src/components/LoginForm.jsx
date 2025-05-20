@@ -1,27 +1,36 @@
-import React from 'react'
+import React, { useState } from "react";
 
-const LoginForm = ({isLoggedIn, setIsLoggedIn}) => {
-  const handleLogin = (e)=>{
+function LoginForm({ isLoggedIn, onLogin }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoggedIn(true);
-  }
+    if (username.trim() && password.trim()) {
+      onLogin(); // Inform parent to update the state
+    }
+  };
+
   return (
-    <div>
-      <form onSubmit={handleLogin}>
-          <label htmlFor="userName">Username: </label>
-          <input type="text" id="userName"/>
-          <br></br>
-          <br></br>
-          <br></br>
-          <label htmlFor="password">Password: </label>
-          <input type="password" id="password"/>
-          <br></br>
-          <br></br>
-          <br></br>
-          <input type="submit" value="Login"></input>
-        </form>
-    </div>
-  )
+    <form onSubmit={handleSubmit}>
+      <h2>Login Form</h2>
+      <input
+        type="text"
+        placeholder="Enter your name"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        required
+      />
+      <input
+        type="password"
+        placeholder="Passwrod"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      <button type="submit">Login</button>
+    </form>
+  );
 }
 
-export default LoginForm
+export default LoginForm;
