@@ -6,10 +6,13 @@ function App() {
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>Parent Component</h1>
       {isLoggedIn ? (
-        <h1>You are logged in!</h1>
+        <>
+          <p>Your are logged in</p>
+        </>
       ) : (
-        <LoginForm isLoggedIn={isLoggedIn} onLogin={() => setIsLoggedIn(true)} />
+        <LoginForm isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       )}
     </div>
   );

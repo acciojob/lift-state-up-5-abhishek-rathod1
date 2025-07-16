@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 
-function LoginForm({ isLoggedIn, onLogin }) {
+function LoginForm({ isLoggedIn, setIsLoggedIn }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (username.trim() && password.trim()) {
-      onLogin(); // Inform parent to update the state
+      // onLogin(); // Inform parent to update the state
+      setIsLoggedIn(true)
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login Form</h2>
+    <form onSubmit={handleSubmit}>      
       <input
         type="text"
         placeholder="Enter your name"
@@ -28,7 +28,7 @@ function LoginForm({ isLoggedIn, onLogin }) {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
-      <button type="submit">Login</button>
+      <button type="submit" >Login</button>
     </form>
   );
 }
